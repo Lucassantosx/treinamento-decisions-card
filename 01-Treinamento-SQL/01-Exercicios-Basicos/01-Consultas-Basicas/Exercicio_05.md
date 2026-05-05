@@ -23,8 +23,9 @@ Praticar:
 ## ✍️ Sua Resposta
 
 ```sql
--- Escreva sua query aqui
-
+select tv.id_venda, tv.id_cliente, tv.vl_venda, tv.dt_venda 
+from decisionscard.t_venda tv
+where tv.dt_venda >= now() - INTERVAL '30 days';
 
 ```
 

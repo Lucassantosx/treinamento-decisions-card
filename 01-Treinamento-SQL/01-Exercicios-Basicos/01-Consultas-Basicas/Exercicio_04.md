@@ -21,7 +21,9 @@ Para ordenar do maior para o menor, use ORDER BY campo DESC.
 ## ✍️ Sua Resposta
 
 ```sql
--- Escreva sua query aqui
+select tv.id_venda, tv.id_cliente, tv.vl_venda, tv.dt_venda 
+from decisionscard.t_venda tv
+order by tv.vl_venda desc limit 5;
 
 
 ```

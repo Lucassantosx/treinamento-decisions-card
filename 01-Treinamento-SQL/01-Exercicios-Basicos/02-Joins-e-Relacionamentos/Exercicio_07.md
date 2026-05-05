@@ -24,7 +24,12 @@ Praticar:
 ## ✍️ Sua Resposta
 
 ```sql
--- Escreva sua query aqui
+select tc.nm_cliente, tr.nm_fantasia, tv.vl_venda, tv.dt_venda 
+from decisionscard.t_venda tv 
+join decisionscard.t_cliente tc on tv.id_cliente = tc.id_cliente 
+join decisionscard.t_rede tr on tr.id_rede = tv.id_rede
+where tv.fl_status_venda = 'A'
+order by tv.dt_venda desc;
 
 
 ```

@@ -23,8 +23,10 @@ Praticar:
 ## ✍️ Sua Resposta
 
 ```sql
--- Escreva sua query aqui
-
+select tc.id_cliente, tc.nm_cliente, tc.dt_cadastro, tca.nu_cartao, tca.fl_status_cartao 
+from decisionscard.t_cliente tc 
+left join decisionscard.t_cartao tca on tc.id_cliente = tca.id_cliente 
+order by tc.nm_cliente;
 
 ```
 

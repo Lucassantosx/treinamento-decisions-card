@@ -22,8 +22,10 @@ Use COUNT(*) ou COUNT(campo) para contar registros que atendem à condição.
 ## ✍️ Sua Resposta
 
 ```sql
--- Escreva sua query aqui
 
+select count(*) 
+from decisionscard.t_cartao tca
+where tca.fl_status_cartao = 'A';
 
 ```
 

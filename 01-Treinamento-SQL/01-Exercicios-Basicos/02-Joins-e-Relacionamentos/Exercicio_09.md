@@ -23,7 +23,13 @@ Praticar:
 ## ✍️ Sua Resposta
 
 ```sql
--- Escreva sua query aqui
+select tc.nm_cliente, te.ds_escolaridade, tec.ds_estado_civil 
+from decisionscard.t_cliente tc
+join decisionscard.t_escolaridade te on tc.id_escolaridade = te.id_escolaridade 
+join decisionscard.t_estado_civil tec on tc.id_estado_civil = tec.id_estado_civil 
+where tc.dt_cadastro >= (select max(dt_cadastro) - interval '2 years'
+from decisionscard.t_cliente)
+order by tc.dt_cadastro desc;
 
 
 ```

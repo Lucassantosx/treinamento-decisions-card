@@ -20,7 +20,10 @@ O campo `cd_uf` contém a sigla do estado (ex: 'SP', 'RJ', 'MG').
 ## ✍️ Sua Resposta
 
 ```sql
--- Escreva sua query aqui
+select tr.id_rede, tr.nm_fantasia, tr.nm_cidade, tr.cd_uf 
+from decisionscard.t_rede tr 
+where tr.cd_uf like 'SP' 
+order by tr.nm_fantasia;
 
 
 ```

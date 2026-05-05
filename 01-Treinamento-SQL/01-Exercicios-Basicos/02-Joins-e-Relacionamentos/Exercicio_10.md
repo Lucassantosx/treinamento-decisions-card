@@ -26,7 +26,14 @@ Praticar:
 ## ✍️ Sua Resposta
 
 ```sql
--- Escreva sua query aqui
+select tc.nm_cliente, tr.nm_fantasia, tr.nm_cidade, tr.cd_uf, tv.vl_venda, tfp.ds_forma_pagamento, tv.dt_venda        
+from decisionscard.t_venda tv 
+join decisionscard.t_cliente tc  on tc.id_cliente = tv.id_cliente 
+join decisionscard.t_rede tr on tr.id_rede = tv.id_rede 
+join decisionscard.t_forma_pagamento tfp  on tfp.id_forma_pagamento = tv.id_forma_pagamento 
+where tv.fl_status_venda = 'A' and tv.dt_venda >= (select max(dt_venda) - interval '6 months'
+from decisionscard.t_venda)
+order by tv.vl_venda desc;
 
 
 ```
