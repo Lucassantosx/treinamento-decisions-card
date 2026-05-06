@@ -26,7 +26,17 @@ Praticar:
 ## ✍️ Sua Resposta
 
 ```sql
--- Escreva sua query aqui
+select tr.cd_uf, 
+tr.nm_fantasia,
+sum(tv.vl_venda ) as Total_Vendas,
+count(*) as Qtd_Vendas,
+avg(tv.vl_venda) as Ticket_Medio
+from decisionscard.t_venda tv
+join decisionscard.t_rede tr on tr.id_rede = tv.id_rede
+where tv.fl_status_venda = 'A'
+group by tr.cd_uf, tr.nm_fantasia 
+having count(*) > 5
+order by tr.cd_uf, total_vendas desc
 
 
 ```

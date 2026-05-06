@@ -26,7 +26,16 @@ Praticar:
 ## ✍️ Sua Resposta
 
 ```sql
--- Escreva sua query aqui
+select tc.id_cliente, 
+tc.nm_cliente,
+count(*) as Qtd_Vendas,
+sum(tv.vl_venda ) as Total_Gasto
+from decisionscard.t_cliente tc 
+join decisionscard.t_venda tv on tc.id_cliente = tv.id_cliente
+where tv.fl_status_venda = 'A'
+group by tc.id_cliente, tc.nm_cliente 
+having count (*) > 10 
+and sum(tv.vl_venda) > 5000; 
 
 
 ```
