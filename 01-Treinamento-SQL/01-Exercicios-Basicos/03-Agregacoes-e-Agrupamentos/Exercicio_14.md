@@ -26,7 +26,21 @@ Praticar:
 ## ✍️ Sua Resposta
 
 ```sql
--- Escreva sua query aqui
+select extract (year from tv.dt_venda) as Ano,
+extract (month from tv.dt_venda) as Mes,
+to_char(dt_venda, 'TMMonth') as nome_mes,
+count(*) as Qtd_Vendas,
+sum(tv.vl_venda) as Total_Vendas,
+lag(sum(tv.vl_venda)) over(order by extract(year from tv.dt_venda), extract(month from tv.dt_venda)) as valor_anterior,
+round( 
+((sum(tv.vl_venda) - lag(sum(tv.vl_venda)) over(order by extract(year from tv.dt_venda), extract(month from tv.dt_venda))) /
+lag(sum(tv.vl_venda)) over(order by extract(year from tv.dt_venda), extract(month from tv.dt_venda))) * 100, 2) as crescimento_pt
+from decisionscard.t_venda tv
+group by 
+extract (year from tv.dt_venda),
+extract (month from tv.dt_venda),
+to_char(tv.dt_venda, 'TMMonth')
+order by Ano, Mes;
 
 
 ```
